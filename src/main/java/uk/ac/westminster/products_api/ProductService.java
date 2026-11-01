@@ -14,6 +14,7 @@ public class ProductService {
     public ProductService() {
         products.add(new DigitalProduct(nextId++, "Ebook of Everything", 10.00, "/book/ebook-of-everything", 5.00));
         products.add(new PhysicalProduct(nextId++, "Mouse", 5.00, 5.00, "5cm x 4cm x 2cm"));
+        // products.add(new Product(nextId++, "Sample Product", 13.00));
     }
 
     public List<Product> getAllProducts() {
@@ -36,5 +37,15 @@ public class ProductService {
 
     public List<Product> findByName(String name) {
         return products.stream().filter(p->p.getName().contains(name)).toList();
+    }
+
+    public List<String> getAllSummaries() {
+        List<String> summaries = new ArrayList<>();
+
+        for (Product p : products) {
+            summaries.add(p.getSummary());
+        }
+
+        return summaries;
     }
 }

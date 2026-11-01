@@ -22,10 +22,10 @@ public class ProductController {
         return productService.getProductById(id).orElse(null);
     }
 
-    @PostMapping()
-    public Product addProduct(@RequestBody Product product){
-        return productService.addProduct(product);
-    }
+//    @PostMapping()
+//    public Product addProduct(@RequestBody Product product){
+//        return productService.addProduct(product);
+//    }
 
     @DeleteMapping("/{id}")
     public void deleteProduct(@PathVariable Long id) {
@@ -35,5 +35,10 @@ public class ProductController {
     @GetMapping("/search")
     public List<Product> search(@RequestParam String name) {
         return productService.findByName(name);
+    }
+
+    @GetMapping("/summaries")
+    public List<String> getSummaries() {
+        return productService.getAllSummaries();
     }
 }
